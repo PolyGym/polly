@@ -1377,11 +1377,13 @@ bool ScopDetection::isValidRegion(DetectionContext &Context) const {
   }
 
   if (!CurRegion.getEntry()->getName().count(OnlyRegion)) {
-    DEBUG({
-      dbgs() << "Region entry does not match -polly-region-only";
-      dbgs() << "\n";
-    });
-    return false;
+    if (CurRegion.getNameStr() != OnlyRegion) {
+      DEBUG({
+        dbgs() << "Region entry does not match -polly-region-only";
+        dbgs() << "\n";
+      });
+      return false;
+    }
   }
 
   // SCoP cannot contain the entry block of the function, because we need

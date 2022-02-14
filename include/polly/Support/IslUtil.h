@@ -10,6 +10,7 @@
 #include "isl/schedule.h"
 #include "isl/schedule_node.h"
 #include "isl/schedule_type.h"
+#include <functional>
 #include <memory>
 #include <string>
 #include <system_error>
